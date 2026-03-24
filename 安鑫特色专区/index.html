@@ -1,0 +1,235 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>安鑫特色专区</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no,email=no,adress=no" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0viewport-fit=cover"
+  />
+  <link rel="preload" href="./images/01.jpg" as="image" />
+  <style>
+    body {
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      outline: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -ms-touch-callout: none;
+      -moz-touch-callout: none;
+      font-family: -apple-system, Helvetica, sans-serif;
+    }
+
+    a,
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .sharekhjl {
+      position: fixed;
+      top: 49vh;
+      left: 0;
+      z-index: 999;
+    }
+
+    #wrapper {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1365px;
+      background-color: #fff;
+      transform-origin: 0 0;
+    }
+
+    #wrapper > img {
+      width: 100%;
+      float: left;
+      position: relative;
+    }
+
+    #wrapper > img:not(:first-of-type) {
+      top: -2px;
+    }
+
+    a.business-link {
+      display: block;
+      position: absolute;
+      border: 4px solid red;
+      font-size: 42px;
+    }
+  </style>
+</head>
+<script>
+  let linkArr = [
+    {
+      eleName: "特色房源",
+      jumpUrl: "12",
+      position: {
+        top: 2245,
+        left: 60,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+    },
+    {
+      eleName: "贷款服务",
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/service/resource/mng/quickTopicsPage/2026/202601/20260119/20260119070000000053/d11840f6-b55e-44f6-aa07-68fa1b823518/index.html",
+      position: {
+        top: 2245,
+        left: 698,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+    },
+    {
+      eleName: "优选商户",
+      position: {
+        top: 3268,
+        left: 54,
+        width: 1249,
+        height: 426,
+        radius: 26,
+      },
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/gbchannel/e_report/CCBLIFE/#/interLayer/YS44000010000078?LOGIN_REQUIRED=0&path=/e/ccb_gjb/vaMlvuVAJjy6u0c5XnRCRA",
+    },
+    {
+      eleName: "精选装修",
+      position: {
+        top: 3749,
+        left: 54,
+        width: 1249,
+        height: 426,
+        radius: 26,
+      },
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/gbchannel/e_report/CCBLIFE/#/interLayer/YS44000010000078?LOGIN_REQUIRED=0&path=/e/ccb_gjb/uQw9tV4fI1Oy_LIjtcZMSg",
+    },
+    {
+      eleName: "消费贷享贴息",
+      position: {
+        top: 4248,
+        left: 54,
+        width: 1249,
+        height: 426,
+        radius: 26,
+      },
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/service/resource/mng/quickTopicsPage/2025/202509/20250902/20250902090000000102/0a02624c-1a25-4879-b944-a858e84bba41/index.html",
+    },
+    {
+      eleName: "装修分期",
+      position: {
+        top: 4909,
+        left: 60,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+      jumpUrl:
+        "https://yunbusiness.ccb.com/gbchannel/e_report/CCBLIFE/#/decolnstallment?fromPage=webview",
+    },
+    {
+      eleName: "消费贷款",
+      position: {
+        top: 4909,
+        left: 698,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+      jumpUrl: "https://i.xiu.ccb.com/v3/m/8kjbu3/",
+    },
+    {
+      eleName: "龙钱宝1号",
+      position: {
+        top: 5909,
+        left: 60,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/service/resource/mng/quickTopicsPage/2025/202511/20251127/20251127080000000006/05013e6c-1f24-4aee-9917-e37e2ffec966/index.html",
+    },
+    {
+      eleName: "存款优选专区",
+      position: {
+        top: 5909,
+        left: 698,
+        width: 597,
+        height: 780,
+        radius: 76,
+      },
+      jumpUrl:
+        "https://res.yunbusiness.ccb.com/gbchannel/e_report/CloudLink/index.html?target=url&ccbParam=https%3A%2F%2Fres.yunbusiness.ccb.com%2Fgbchannel%2Fe_report%2FCCBLIFE%2F%23%2FinterLayer%2FYS44000008001147%3FLOGIN_REQUIRED%3D1%26path%3D%2Fv2%2Fmanage%2Fbook%2Fznnpvg%2F",
+    },
+  ];
+
+  // 默认position
+  const defaultPosition = {
+    top: 2190,
+    left: 126,
+    width: 1106,
+    height: 324,
+  };
+</script>
+
+<body>
+  <div class="sharekhjl">
+    <a href="https://i.xiu.ccb.com/v2/manage/book/4uof4f/"
+      ><img src="./images/khjl.gif" width="90px" alt=""
+    /></a>
+  </div>
+  <div id="wrapper">
+    <img id="first-image" src="./images/01.jpg" importance="high" />
+    <img src="./images/02.jpg" importance="low" />
+    <img style="top: -3px" src="./images/03.jpg" importance="low" />
+    <img style="top: -5px" src="./images/04.jpg" importance="low" />
+  </div>
+  <script>
+    var container = document.querySelector("#wrapper");
+    function scaleContainer() {
+      var e = window.innerWidth;
+      container.style.transform = "scale(" + e / 1365 + ")";
+    }
+    ((document.getElementById("first-image").onload = function () {
+      (scaleContainer(), (container.style.visibility = "visible"));
+    }),
+      window.addEventListener("resize", scaleContainer));
+
+    // 动态生成 business-link
+    (function renderLinks() {
+      var wrapper = document.getElementById("wrapper");
+      linkArr.forEach(function (link, index) {
+        if (!link.jumpUrl) return;
+        var pos = link.position || defaultPosition;
+        var a = document.createElement("a");
+        a.className = "business-link";
+        a.href = link.jumpUrl;
+        a.style.top = pos.top + "px";
+        a.style.left = pos.left + "px";
+        a.style.width = pos.width + "px";
+        a.style.height = pos.height + "px";
+        a.style.borderRadius = (pos.radius || 0) + "px";
+        a.innerText = link.eleName; // 可选：显示元素名称
+        wrapper.appendChild(a);
+      });
+    })();
+  </script>
+</body>
