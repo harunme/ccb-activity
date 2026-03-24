@@ -10,6 +10,10 @@
     content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0viewport-fit=cover"
   />
   <link rel="preload" href="./images/01.jpg" as="image" />
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script src="./js/wxOpenTagRequest.js"></script>
+  <script src="./js/jump.js"></script>
   <style>
     body {
       height: 100vh;
@@ -75,7 +79,10 @@
   let linkArr = [
     {
       eleName: "特色房源",
-      jumpUrl: "12",
+      miniId: "gh_327bec485b01",
+      pagesUrl: "/pages/index/index",
+      wxJumpUrl:
+        "weixin://dl/business/?appid=wx89f5c975fc52e93c&path=/pages/index/index",
       position: {
         top: 2245,
         left: 60,
@@ -217,19 +224,39 @@
     (function renderLinks() {
       var wrapper = document.getElementById("wrapper");
       linkArr.forEach(function (link, index) {
-        if (!link.jumpUrl) return;
         var pos = link.position || defaultPosition;
         var a = document.createElement("a");
         a.className = "business-link";
-        a.href = link.jumpUrl;
         a.style.top = pos.top + "px";
         a.style.left = pos.left + "px";
         a.style.width = pos.width + "px";
         a.style.height = pos.height + "px";
         a.style.borderRadius = (pos.radius || 0) + "px";
         a.innerText = link.eleName; // 可选：显示元素名称
+
+        // 特色房源使用小程序跳转
+        if (link.miniId) {
+          a.href = "javascript:void(0)";
+          a.addEventListener("click", function () {
+            if (isInClient()) {
+              callMiniProgram(link, function (res) {
+                console.log("callMiniProgram res", res);
+              });
+            } else if (isInWechat()) {
+              window.location.href = link.wxJumpUrl;
+            }
+          });
+        } else {
+          a.href = link.jumpUrl;
+        }
+
         wrapper.appendChild(a);
       });
     })();
+
+    // 微信鉴权初始化
+    $(function () {
+      openTagRequest("安鑫特色专区", "安鑫特色专区专属服务");
+    });
   </script>
 </body>
