@@ -48,7 +48,7 @@
         /*去掉a、input和button点击时的蓝色外边框和灰色半透明背景*/
       }
 
-      #wrapper {
+      .imageBox {
         visibility: hidden;
         position: absolute;
         top: 0;
@@ -56,6 +56,22 @@
         width: 1365px;
         background-color: #fff;
         transform-origin: 0 0;
+      }
+
+      .imageBox img {
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        margin-top: -1px;
+      }
+      .imageBox img:not(:first-child) {
+        margin-top: -1px;
+      }
+
+      #wrapper {
+        width: 100%;
+        height: 100%;
       }
 
       .container {
@@ -593,25 +609,12 @@
     <div id="wrapper">
       <div class="container">
         <div class="noneBox">
-          <img
-            id="first-image"
-            src="./images/01.jpg"
-            fetchpriority="high"
-            loading="eager"
-          />
-          <img src="./images/02.jpg" fetchpriority="high" loading="eager" />
-          <img
-            style="top: -3px"
-            src="./images/03.jpg"
-            fetchpriority="low"
-            loading="lazy"
-          />
-          <img
-            style="top: -5px"
-            src="./images/04.jpg"
-            fetchpriority="low"
-            loading="lazy"
-          />
+          <div class="imageBox">
+            <img src="./images/01.jpg" fetchpriority="high" loading="eager" />
+            <img src="./images/02.jpg" fetchpriority="high" loading="eager" />
+            <img src="./images/03.jpg" fetchpriority="low" loading="lazy" />
+            <img src="./images/04.jpg" fetchpriority="low" loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
@@ -624,13 +627,13 @@
       <div class="rulerMain"></div>
     </div>
     <script>
-      var container = document.querySelector("#wrapper");
+      var imageBox = document.querySelector(".imageBox");
       function scaleContainer() {
         var e = window.innerWidth;
-        container.style.transform = "scale(" + e / 1365 + ")";
+        imageBox.style.transform = "scale(" + e / 1365 + ")";
       }
-      ((document.getElementById("first-image").onload = function () {
-        (scaleContainer(), (container.style.visibility = "visible"));
+      ((document.querySelector(".imageBox img").onload = function () {
+        (scaleContainer(), (imageBox.style.visibility = "visible"));
       }),
         window.addEventListener("resize", scaleContainer));
       let linkDivs = [
@@ -726,7 +729,7 @@
         },
       ];
       (function renderLinks() {
-        var wrapper = document.getElementById("wrapper");
+        var imageBox = document.querySelector(".imageBox");
         linkDivs.forEach(function (link, index) {
           var pos = link.position || defaultPosition;
           var linkElement = document.createElement("div");
@@ -740,7 +743,7 @@
           linkElement.addEventListener("click", function () {
             receiveCoupon(index);
           });
-          wrapper.appendChild(linkElement);
+          imageBox.appendChild(linkElement);
         });
       })();
     </script>
