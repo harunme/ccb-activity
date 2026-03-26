@@ -48,27 +48,6 @@
         /*去掉a、input和button点击时的蓝色外边框和灰色半透明背景*/
       }
 
-      .imageBox {
-        visibility: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 1365px;
-        background-color: #fff;
-        transform-origin: 0 0;
-      }
-
-      .imageBox img {
-        display: block;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        margin-top: -1px;
-      }
-      .imageBox img:not(:first-child) {
-        margin-top: -1px;
-      }
-
       #wrapper {
         width: 100%;
         height: 100%;
@@ -405,55 +384,6 @@
         height: 100%;
       }
 
-      .flex-box .w301 {
-        width: 44.2752397% !important;
-      }
-
-      .flex-box .w302 {
-        width: 21.77100959% !important;
-      }
-
-      .flex-box .w303 {
-        width: 33.95375071% !important;
-      }
-
-      .flex-box .w401 {
-        width: 30.45685279% !important;
-      }
-
-      .flex-box .w402 {
-        width: 69.54314721% !important;
-      }
-
-      .flex-box .w601 {
-        width: 31.2464749% !important;
-      }
-
-      .flex-box .w602 {
-        width: 16.75126904% !important;
-      }
-
-      .flex-box .w603 {
-        width: 21.31979695% !important;
-      }
-
-      .flex-box .w604 {
-        width: 30.68245911% !important;
-      }
-
-      .flex-box .w901 {
-        width: 45.62887761% !important;
-      }
-
-      .flex-box .w902 {
-        width: 54.37112239% !important;
-      }
-
-      .flex-box .w25 {
-        width: 25% !important;
-        height: 100%;
-      }
-
       .p1 {
         width: 80%;
         top: 30.4%;
@@ -609,11 +539,76 @@
     <div id="wrapper">
       <div class="container">
         <div class="noneBox">
-          <div class="imageBox">
-            <img src="./images/01.jpg" fetchpriority="high" loading="eager" />
-            <img src="./images/02.jpg" fetchpriority="high" loading="eager" />
-            <img src="./images/03.jpg" fetchpriority="low" loading="lazy" />
-            <img src="./images/04.jpg" fetchpriority="low" loading="lazy" />
+          <img src="./images/1.jpg" fetchpriority="high" loading="eager" />
+          <div class="flex-box">
+            <img
+              src="./images/2.jpg"
+              class="w50"
+              fetchpriority="high"
+              loading="eager"
+              onclick="receiveCoupon(0)"
+            />
+            <img
+              src="./images/3.jpg"
+              class="w50"
+              fetchpriority="low"
+              loading="lazy"
+              onclick="receiveCoupon(1)"
+            />
+          </div>
+          <img src="./images/4.jpg" fetchpriority="low" loading="lazy" />
+          <img
+            src="./images/5.jpg"
+            fetchpriority="low"
+            loading="lazy"
+            onclick="receiveCoupon(2)"
+          />
+          <img
+            src="./images/6.jpg"
+            fetchpriority="low"
+            loading="lazy"
+            onclick="receiveCoupon(3)"
+          />
+          <img
+            src="./images/7.jpg"
+            fetchpriority="low"
+            loading="lazy"
+            onclick="receiveCoupon(4)"
+          />
+          <img src="./images/8.jpg" fetchpriority="low" loading="lazy" />
+          <div class="flex-box">
+            <img
+              src="./images/9.jpg"
+              class="w50"
+              fetchpriority="high"
+              loading="eager"
+              onclick="receiveCoupon(5)"
+            />
+            <img
+              src="./images/10.jpg"
+              class="w50"
+              fetchpriority="low"
+              loading="lazy"
+              onclick="receiveCoupon(6)"
+            />
+          </div>
+          <img src="./images/11.jpg" fetchpriority="low" loading="lazy" />
+          <div class="flex-box">
+            <img
+              src="./images/12.jpg"
+              class="w50"
+              fetchpriority="high"
+              loading="eager"
+              onclick="receiveCoupon(7)"
+            />
+            <img
+              src="./images/13.jpg"
+              class="w50"
+              fetchpriority="low"
+              loading="lazy"
+              onclick="receiveCoupon(8)"
+            />
+            <img src="./images/14.jpg" fetchpriority="low" loading="lazy" />
           </div>
         </div>
       </div>
@@ -626,127 +621,6 @@
       <div class="ruler-title">活动规则</div>
       <div class="rulerMain"></div>
     </div>
-    <script>
-      var imageBox = document.querySelector(".imageBox");
-      function scaleContainer() {
-        var e = window.innerWidth;
-        imageBox.style.transform = "scale(" + e / 1365 + ")";
-      }
-      ((document.querySelector(".imageBox img").onload = function () {
-        (scaleContainer(), (imageBox.style.visibility = "visible"));
-      }),
-        window.addEventListener("resize", scaleContainer));
-      let linkDivs = [
-        {
-          eleName: "特色房源",
-          position: {
-            top: 2245,
-            left: 60,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-        {
-          eleName: "贷款服务",
-          position: {
-            top: 2245,
-            left: 698,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-        {
-          eleName: "优选商户",
-          position: {
-            top: 3268,
-            left: 54,
-            width: 1249,
-            height: 426,
-            radius: 26,
-          },
-        },
-        {
-          eleName: "精选装修",
-          position: {
-            top: 3749,
-            left: 54,
-            width: 1249,
-            height: 426,
-            radius: 26,
-          },
-        },
-        {
-          eleName: "消费贷享贴息",
-          position: {
-            top: 4248,
-            left: 54,
-            width: 1249,
-            height: 426,
-            radius: 26,
-          },
-        },
-        {
-          eleName: "装修分期",
-          position: {
-            top: 4909,
-            left: 60,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-        {
-          eleName: "消费贷款",
-          position: {
-            top: 4909,
-            left: 698,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-        {
-          eleName: "龙钱宝1号",
-          position: {
-            top: 5909,
-            left: 60,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-        {
-          eleName: "存款优选专区",
-          position: {
-            top: 5909,
-            left: 698,
-            width: 597,
-            height: 780,
-            radius: 76,
-          },
-        },
-      ];
-      (function renderLinks() {
-        var imageBox = document.querySelector(".imageBox");
-        linkDivs.forEach(function (link, index) {
-          var pos = link.position || defaultPosition;
-          var linkElement = document.createElement("div");
-          linkElement.className = "business-link";
-          linkElement.style.top = pos.top + "px";
-          linkElement.style.left = pos.left + "px";
-          linkElement.style.width = pos.width + "px";
-          linkElement.style.height = pos.height + "px";
-          linkElement.style.borderRadius = (pos.radius || 0) + "px";
-          linkElement.innerText = link.eleName; // 可选：显示元素名称
-          linkElement.addEventListener("click", function () {
-            receiveCoupon(index);
-          });
-          imageBox.appendChild(linkElement);
-        });
-      })();
-    </script>
     <!-- script -->
     <script>
       $(function () {
