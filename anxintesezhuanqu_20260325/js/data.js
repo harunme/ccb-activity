@@ -4,9 +4,8 @@
     eleName: "特色房源",
     jumpUrl: "",
     couponType: "jumpMini",
-    miniId: "gh_c6f4bc35b9a2", //填其他小程序的原始id，若跳建行生活小程序, 就删去这行
-    pagesUrl:
-      "pages/taro/pages/team-store-house-list/index?type=sell&_x_domain_id=65b3337572e2d9076bb1b660", //小程序路径
+    miniId: "gh_327bec485b01", //填其他小程序的原始id，若跳建行生活小程序, 就删去这行
+    pagesUrl: "pages/index/index.html", //小程序路径
   },
   {
     eleName: "贷款服务",
